@@ -40,12 +40,12 @@ function shadeColor(hex, amt) {
 
 /* ---- 1.1 角色（可自由追加：style / extra / glasses） ---- */
 const CHARACTERS = {
-  player:    { name: '小春（你）',      skin: '#ffe3cd', hair: '#6b4b3e', style: 'bob',      outfit: '#ffffff', accent: '#8fc9e8', extra: 'apron' },
-  manager:   { name: '店长·阿和',        skin: '#ffdfc4', hair: '#4a3b34', style: 'part',     outfit: '#f7e4c4', accent: '#e59a5c', extra: 'vest', glasses: true },
-  obaachan:  { name: '常客·花子奶奶',    skin: '#ffe2d2', hair: '#ded7d0', style: 'bun',      outfit: '#f6d9e4', accent: '#d98cae', extra: 'shawl', glasses: true },
-  salaryman: { name: '上班族·健太',      skin: '#ffdfc6', hair: '#39323d', style: 'short',    outfit: '#a6c6e6', accent: '#4a5568', extra: 'tie' },
-  student:   { name: '小学生·小葵',      skin: '#ffe6d4', hair: '#5b4136', style: 'ponytail', outfit: '#fff0b4', accent: '#e8a54a', extra: 'backpack' },
-  night:     { name: '夜班客·沉默先生',  skin: '#f5dccb', hair: '#3b3945', style: 'beanie',   outfit: '#5d6779', accent: '#8b96ad', extra: 'beanie' }
+  player:    { name: '小春（你）',      skin: '#ffe6d3', hair: '#8a5b41', style: 'bob',      outfit: '#ffffff', accent: '#3c5a99', eye: '#c08a54', extra: 'apron', pin: true },
+  manager:   { name: '店长·阿和',        skin: '#ffdfc4', hair: '#4a3b34', style: 'part',     outfit: '#fdf3df', accent: '#c98a4e', eye: '#8a6034', extra: 'vest', glasses: true },
+  obaachan:  { name: '常客·花子奶奶',    skin: '#ffe2d2', hair: '#e2dbd4', style: 'bun',      outfit: '#f8e2ea', accent: '#b98bab', eye: '#9b7462', extra: 'shawl', glasses: true },
+  salaryman: { name: '上班族·健太',      skin: '#ffdfc6', hair: '#3a3340', style: 'short',    outfit: '#9dbde0', accent: '#3d4f6e', eye: '#5f4a44', extra: 'tie', tie: '#b4565c' },
+  student:   { name: '小学生·小葵',      skin: '#ffe6d4', hair: '#6a4834', style: 'ponytail', outfit: '#fff3c0', accent: '#e8a04a', eye: '#b3794a', extra: 'backpack' },
+  night:     { name: '夜班客·沉默先生',  skin: '#f3dbc9', hair: '#3b3945', style: 'beanie',   outfit: '#59637a', accent: '#8b96ad', eye: '#6a6b85', extra: 'beanie' }
 };
 
 /* ---- 1.2 货架分类 ---- */
@@ -442,172 +442,248 @@ function charSVG(id, mood) {
   const happy = mood === 'happy' || mood === 'thanks';
   const worried = mood === 'worried';
   const skin = c.skin, hair = c.hair, outfit = c.outfit, accent = c.accent;
-  const skinHi = shadeColor(skin, 14);
-  const skinSh = shadeColor(skin, -24);
-  const hairHi = shadeColor(hair, 54);
-  const hairSh = shadeColor(hair, -34);
-  const outfitHi = shadeColor(outfit, 10);
+  const skinHi = shadeColor(skin, 20);
+  const skinSh = shadeColor(skin, -26);
+  const hairHi = shadeColor(hair, 62);
+  const hairSh = shadeColor(hair, -36);
+  const hairDk = shadeColor(hair, -54);
+  const outfitHi = shadeColor(outfit, 12);
   const outfitSh = shadeColor(outfit, -22);
-  const outfitDk = shadeColor(outfit, -42);
-  const accentSh = shadeColor(accent, -30);
+  const outfitDk = shadeColor(outfit, -44);
+  const accentSh = shadeColor(accent, -36);
+  const accentHi = shadeColor(accent, 22);
+  const eyeMid = c.eye || '#8a5a3c';
+  const eyeDk = shadeColor(eyeMid, -66);
+  const eyeLt = shadeColor(eyeMid, 76);
   const u = 'ch' + (++__charUid) + '_';
-  const gSkin = `url(#${u}skin)`, gHair = `url(#${u}hair)`, gCloth = `url(#${u}cloth)`, gIris = `url(#${u}iris)`;
+  const gSkin = `url(#${u}skin)`, gHair = `url(#${u}hair)`, gCloth = `url(#${u}cloth)`,
+        gIris = `url(#${u}iris)`, gApron = `url(#${u}apron)`, gWhite = `url(#${u}white)`;
 
   // 每个实例独立渐变 ID，避免同页多个立绘互相覆盖
   const defs = `<defs>
-    <radialGradient id="${u}skin" cx="36%" cy="26%" r="82%">
-      <stop offset="0%" stop-color="${skinHi}"/><stop offset="58%" stop-color="${skin}"/><stop offset="100%" stop-color="${skinSh}"/>
+    <radialGradient id="${u}skin" cx="34%" cy="20%" r="88%">
+      <stop offset="0%" stop-color="${skinHi}"/><stop offset="52%" stop-color="${skin}"/><stop offset="100%" stop-color="${skinSh}"/>
     </radialGradient>
-    <linearGradient id="${u}hair" x1="0" y1="0" x2=".28" y2="1">
-      <stop offset="0%" stop-color="${hairHi}"/><stop offset="38%" stop-color="${hair}"/><stop offset="100%" stop-color="${hairSh}"/>
+    <linearGradient id="${u}hair" x1=".12" y1="0" x2=".42" y2="1">
+      <stop offset="0%" stop-color="${hairHi}"/><stop offset="28%" stop-color="${hair}"/>
+      <stop offset="76%" stop-color="${hair}"/><stop offset="100%" stop-color="${hairSh}"/>
     </linearGradient>
-    <linearGradient id="${u}cloth" x1=".1" y1="0" x2=".5" y2="1">
+    <linearGradient id="${u}cloth" x1=".1" y1="0" x2=".55" y2="1">
       <stop offset="0%" stop-color="${outfitHi}"/><stop offset="52%" stop-color="${outfit}"/><stop offset="100%" stop-color="${outfitSh}"/>
     </linearGradient>
-    <linearGradient id="${u}iris" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#8a5f45"/><stop offset="55%" stop-color="#57392c"/><stop offset="100%" stop-color="#2b211d"/>
+    <linearGradient id="${u}apron" x1=".1" y1="0" x2=".35" y2="1">
+      <stop offset="0%" stop-color="${accentHi}"/><stop offset="52%" stop-color="${accent}"/><stop offset="100%" stop-color="${accentSh}"/>
+    </linearGradient>
+    <radialGradient id="${u}iris" cx="50%" cy="78%" r="84%">
+      <stop offset="0%" stop-color="${eyeLt}"/><stop offset="46%" stop-color="${eyeMid}"/><stop offset="100%" stop-color="${eyeDk}"/>
+    </radialGradient>
+    <linearGradient id="${u}white" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#eee0d6"/><stop offset="42%" stop-color="#fffdfb"/><stop offset="100%" stop-color="#fffdfb"/>
     </linearGradient>
     <radialGradient id="${u}shadow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="rgba(120,100,80,.26)"/><stop offset="68%" stop-color="rgba(120,100,80,.11)"/><stop offset="100%" stop-color="rgba(120,100,80,0)"/>
+      <stop offset="0%" stop-color="rgba(120,100,80,.28)"/><stop offset="70%" stop-color="rgba(120,100,80,.11)"/><stop offset="100%" stop-color="rgba(120,100,80,0)"/>
     </radialGradient>
+    <clipPath id="${u}eyeClip"><path d="M32.3,56.4 C32.6,50.6 45.4,50.3 46.9,56 C46,61.9 33.2,62.1 32.3,56.4 Z"/></clipPath>
   </defs>`;
 
-  let back = '', front = '', hat = '';
+  let back = '', front = '', hat = '', accessory = '';
   switch (c.style) {
     case 'bob':
-      back = `<path d="M15,56 C15,24 30,10 50,10 C70,10 85,24 85,56 L85,94 Q50,104 15,94 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="2"/>`;
-      front = `<path d="M19,52 C19,24 34,12 50,12 C66,12 81,24 81,52 C75,38 65,32 50,32 C35,32 25,38 19,52 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="1.8"/>`;
+      back = `<path d="M16,57 C16,24 31,10 50,10 C69,10 84,24 84,57 L84,84 Q50,96 16,84 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="1.8"/>
+              <path d="M19,76 C24,85 32,90 41,92 C31,87 25,81 23,73 Z" fill="${hairSh}" opacity=".3"/>`;
+      front = `<path d="M18,54 C18,25 32,11 50,11 C68,11 82,25 82,54 C77,42 70,35 62,32 C56,42 46,46 38,43 C30,40 23,45 18,54 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="1.6"/>
+               <path d="M25,40 C31,31 40,26 50,25 C42,29 34,34 29,43 Z" fill="${hairHi}" opacity=".33"/>
+               <path d="M20,50 C17,62 18,72 21,80 C24,70 24,58 25,50 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="1.1"/>
+               <path d="M80,50 C83,62 82,72 79,80 C76,70 76,58 75,50 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="1.1"/>`;
       break;
     case 'ponytail':
-      back = `<path d="M16,54 C16,22 32,10 50,10 C68,10 84,22 84,54 L84,84 Q50,94 16,84 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="2"/>
-              <ellipse cx="87" cy="66" rx="9" ry="24" fill="${gHair}" stroke="${hairSh}" stroke-width="1.8"/>
-              <path d="M85,50 q4,16 1,30" stroke="${hairHi}" stroke-width="1.4" fill="none" opacity=".4"/>`;
-      front = `<path d="M18,52 C18,23 33,12 50,12 C67,12 82,23 82,52 C75,37 65,31 50,31 C35,31 25,37 18,52 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="1.8"/>
-               <path d="M18,52 C15,40 19,28 27,21 C24,33 24,44 26,54 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="1.6"/>`;
+      back = `<path d="M16,55 C16,23 32,10 50,10 C68,10 84,23 84,55 L84,80 Q50,90 16,80 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="1.8"/>
+              <path d="M81,33 C92,29 97,43 92,57 C89,66 85,72 80,75 C86,62 87,44 79,37 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="1.6"/>
+              <path d="M84,42 C89,48 89,60 85,68" stroke="${hairHi}" stroke-width="1.5" fill="none" opacity=".35" stroke-linecap="round"/>`;
+      front = `<path d="M18,53 C18,24 33,11 50,11 C67,11 82,24 82,53 C76,41 68,34 60,32 C54,41 45,45 37,42 C29,39 23,45 18,53 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="1.6"/>
+               <path d="M18,53 C15,42 18,30 26,22 C24,34 24,44 27,54 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="1.2"/>
+               <path d="M26,40 C32,31 41,26 51,25 C43,29 34,34 29,43 Z" fill="${hairHi}" opacity=".3"/>`;
+      accessory = `<ellipse cx="82" cy="34" rx="4.6" ry="3.6" transform="rotate(-16 82 34)" fill="${accent}" stroke="${accentSh}" stroke-width="1"/>
+                   <path d="M79,32 q3,2 6,.4" stroke="${accentHi}" stroke-width="1.2" fill="none" opacity=".8"/>`;
       break;
     case 'bun':
-      back = `<path d="M18,56 C18,24 33,11 50,11 C67,11 82,24 82,56 L82,86 Q50,96 18,86 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="2"/>`;
-      front = `<path d="M19,52 C19,23 34,12 50,12 C66,12 81,23 81,52 C75,37 65,32 50,32 C35,32 25,37 19,52 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="1.8"/>`;
-      hat = `<circle cx="50" cy="12" r="12" fill="${gHair}" stroke="${hairSh}" stroke-width="2"/>
-             <path d="M43,8 q4,-3 8,-1.4" stroke="${hairHi}" stroke-width="1.6" fill="none" opacity=".5" stroke-linecap="round"/>
-             <circle cx="46" cy="8" r="2.2" fill="rgba(255,255,255,.5)"/>`;
+      back = `<path d="M17,57 C17,24 33,10 50,10 C67,10 83,24 83,57 L83,80 Q50,90 17,80 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="1.8"/>
+              <circle cx="50" cy="9" r="12.6" fill="${gHair}" stroke="${hairSh}" stroke-width="1.8"/>
+              <path d="M41,6 C45,1 55,1 59,5" stroke="${hairHi}" stroke-width="1.8" fill="none" opacity=".45" stroke-linecap="round"/>`;
+      front = `<path d="M18,52 C18,24 34,11 50,11 C66,11 82,24 82,52 C78,41 69,35 59,33 C54,39 46,39 41,33 C31,35 22,41 18,52 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="1.6"/>
+               <path d="M50,13 C47,20 46,27 47,33" stroke="${hairSh}" stroke-width="1.2" fill="none" opacity=".55"/>
+               <path d="M23,42 C29,32 37,26 46,24 C38,29 30,36 25,45 Z" fill="${hairHi}" opacity=".3"/>`;
       break;
     case 'part':
-      back = `<path d="M18,54 C18,24 33,12 50,12 C67,12 82,24 82,54 L82,74 Q50,84 18,74 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="2"/>`;
-      front = `<path d="M19,50 C23,24 38,12 57,12 C72,14 80,27 82,45 C71,32 51,29 37,39 C29,44 23,47 19,50 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="1.8"/>`;
+      back = `<path d="M18,55 C18,24 33,11 50,11 C67,11 82,24 82,55 L82,72 Q50,82 18,72 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="1.8"/>
+              <path d="M22,52 C21,59 22,64 25,68 L28,53 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="1"/>`;
+      front = `<path d="M19,50 C22,24 38,11 57,12 C74,14 82,27 82,46 C73,32 54,28 40,37 C31,42 23,45 19,50 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="1.6"/>
+               <path d="M27,36 C36,24 49,19 61,20 C49,23 38,28 30,39 Z" fill="${hairHi}" opacity=".34"/>
+               <path d="M78,50 C76,60 74,66 71,70" stroke="${hairSh}" stroke-width="1.2" fill="none" opacity=".4"/>`;
+      break;
+    case 'short':
+      back = `<path d="M18,53 C18,25 33,12 50,12 C67,12 82,25 82,53 L82,64 Q50,74 18,64 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="1.8"/>`;
+      front = `<path d="M18,50 C20,26 35,11 52,11 C70,12 81,26 82,48 C75,36 64,30 53,30 C43,30 33,35 26,43 C23,46 20,48 18,50 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="1.6"/>
+               <path d="M27,45 C27,38 30,31 35,26 C33,34 33,40 34,46 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="1"/>
+               <path d="M29,37 C37,25 49,20 60,22 C48,25 38,29 32,40 Z" fill="${hairHi}" opacity=".32"/>
+               <path d="M80,48 C78,56 76,60 73,63" stroke="${hairSh}" stroke-width="1.2" fill="none" opacity=".45"/>`;
       break;
     case 'beanie':
-      back = `<path d="M17,56 C17,25 32,12 50,12 C68,12 83,25 83,56 L83,76 Q50,86 17,76 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="2"/>`;
-      front = `<path d="M20,50 C20,26 34,16 50,16 C66,16 80,26 80,50 C74,38 64,33 50,33 C36,33 26,38 20,50 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="1.8"/>`;
-      hat = `<path d="M15,44 C15,16 31,5 50,5 C69,5 85,16 85,44 Z" fill="${accent}" stroke="${accentSh}" stroke-width="1.8"/>
-             <path d="M17,40 C18,20 32,9 48,7" stroke="rgba(255,255,255,.4)" stroke-width="3" fill="none" stroke-linecap="round"/>
-             <rect x="13" y="40" width="74" height="11" rx="5.5" fill="${shadeColor(accent, -22)}" stroke="${shadeColor(accent, -40)}" stroke-width="1.4"/>
-             <path d="M17,44.5 h66" stroke="rgba(255,255,255,.35)" stroke-width="1.2"/>
-             <circle cx="50" cy="6" r="7" fill="${shadeColor(accent, 22)}" stroke="${shadeColor(accent, -18)}" stroke-width="1.4"/>
-             <circle cx="48" cy="4" r="2" fill="rgba(255,255,255,.55)"/>`;
+      back = `<path d="M17,55 C17,24 32,11 50,11 C68,11 83,24 83,55 L83,74 Q50,84 17,74 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="1.8"/>`;
+      front = `<path d="M21,48 C22,30 33,20 47,19 C57,19 68,23 74,31 C68,36 60,39 50,39 C40,39 31,40 25,45 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="1.4"/>
+               <path d="M24,44 C28,33 37,26 47,24 C38,29 31,36 27,46 Z" fill="${hairHi}" opacity=".3"/>`;
+      hat = `<path d="M15,40 C15,14 31,3 50,3 C69,3 85,14 85,40 Z" fill="${accent}" stroke="${accentSh}" stroke-width="1.8"/>
+             <path d="M18,37 C19,18 32,7 48,6" stroke="rgba(255,255,255,.45)" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+             <path d="M26,39 C30,21 40,10 50,7" stroke="${accentSh}" stroke-width="1" fill="none" opacity=".35"/>
+             <path d="M62,8 C70,15 76,26 78,39" stroke="${accentSh}" stroke-width="1" fill="none" opacity=".35"/>
+             <rect x="13" y="36" width="74" height="10" rx="5" fill="${shadeColor(accent, -20)}" stroke="${accentSh}" stroke-width="1.4"/>
+             <path d="M17,40.4 h66" stroke="rgba(255,255,255,.4)" stroke-width="1.1"/>
+             <path d="M22,43.4 v3 M32,43.4 v3 M42,43.4 v3 M50,43.4 v3 M58,43.4 v3 M68,43.4 v3 M78,43.4 v3" stroke="${accentSh}" stroke-width=".8" opacity=".5"/>
+             <circle cx="50" cy="4" r="6.6" fill="${shadeColor(accent, 24)}" stroke="${accentSh}" stroke-width="1.3"/>
+             <circle cx="48" cy="2" r="1.9" fill="rgba(255,255,255,.6)"/>`;
       break;
     default:
-      back = `<path d="M18,54 C18,24 33,12 50,12 C67,12 82,24 82,54 L82,72 Q50,82 18,72 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="2"/>`;
+      back = `<path d="M18,55 C18,24 33,11 50,11 C67,11 82,24 82,55 L82,72 Q50,82 18,72 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="1.8"/>`;
       front = `<path d="M19,52 C19,23 34,12 50,12 C66,12 81,23 81,52 C75,37 65,31 50,31 C35,31 25,37 19,52 Z" fill="${gHair}" stroke="${hairSh}" stroke-width="1.8"/>`;
   }
 
-  const strands = `<path d="M33,38 C34,28 42,22 52,20" stroke="${hairHi}" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".42"/>
-    <path d="M45,32 C48,25 55,21 62,22" stroke="${hairHi}" stroke-width="1.1" fill="none" stroke-linecap="round" opacity=".3"/>`;
+  const strands = `<path d="M28,30 C34,19 44,14 55,15" stroke="#fffdf6" stroke-width="3.6" fill="none" stroke-linecap="round" opacity=".22"/>
+    <path d="M33,25 C38,19 45,16.4 51,16.6" stroke="#fffdf6" stroke-width="1.4" fill="none" stroke-linecap="round" opacity=".3"/>
+    <path d="M77,33 C81,42 82,55 78,66" stroke="rgba(255,246,230,.5)" stroke-width="1.6" fill="none" stroke-linecap="round"/>`;
 
-  let eyes;
-  if (happy) {
-    const lw = mood === 'thanks' ? 3.6 : 3.1;
-    eyes = `<path d="M34.4,56.2 q5.8,-8.6 11.6,-.4" stroke="#3d2f2a" stroke-width="${lw}" fill="none" stroke-linecap="round"/>
-            <path d="M54,55.8 q5.8,-8.6 11.6,-.4" stroke="#3d2f2a" stroke-width="${lw}" fill="none" stroke-linecap="round"/>
-            <path d="M35.4,58.4 q2.2,1.8 4.6,1.2" stroke="${skinSh}" stroke-width="1" fill="none" opacity=".5" stroke-linecap="round"/>
-            <path d="M55,58 q2.2,1.8 4.6,1.2" stroke="${skinSh}" stroke-width="1" fill="none" opacity=".5" stroke-linecap="round"/>`;
-  } else if (worried) {
-    eyes = `<ellipse cx="39.5" cy="56" rx="3.9" ry="4.8" fill="#fffdfa"/>
-            <ellipse cx="60.5" cy="56" rx="3.9" ry="4.8" fill="#fffdfa"/>
-            <ellipse cx="39.5" cy="56.6" rx="2.9" ry="3.7" fill="${gIris}"/>
-            <ellipse cx="60.5" cy="56.6" rx="2.9" ry="3.7" fill="${gIris}"/>
-            <ellipse cx="39.5" cy="57.2" rx="1.4" ry="1.9" fill="#241c19"/>
-            <ellipse cx="60.5" cy="57.2" rx="1.4" ry="1.9" fill="#241c19"/>
-            <circle cx="38.2" cy="54.6" r="1.2" fill="#fff"/>
-            <circle cx="59.2" cy="54.6" r="1.2" fill="#fff"/>
-            <path d="M35.4,51.8 q4.2,-3.4 8.2,-.8" stroke="#3d2f2a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-            <path d="M56.4,51 q4.2,-2.6 8.2,1" stroke="#3d2f2a" stroke-width="1.5" fill="none" stroke-linecap="round"/>`;
-  } else {
-    eyes = `<ellipse cx="39.5" cy="55.4" rx="4.3" ry="5.2" fill="#fffdfa"/>
-            <ellipse cx="60.5" cy="55.4" rx="4.3" ry="5.2" fill="#fffdfa"/>
-            <ellipse cx="39.5" cy="55.6" rx="3.3" ry="4.3" fill="${gIris}"/>
-            <ellipse cx="60.5" cy="55.6" rx="3.3" ry="4.3" fill="${gIris}"/>
-            <ellipse cx="39.5" cy="56.2" rx="1.6" ry="2.2" fill="#241c19"/>
-            <ellipse cx="60.5" cy="56.2" rx="1.6" ry="2.2" fill="#241c19"/>
-            <circle cx="38" cy="53.2" r="1.5" fill="#fff"/>
-            <circle cx="41.2" cy="57.4" r=".85" fill="#fff" opacity=".8"/>
-            <circle cx="59" cy="53.2" r="1.5" fill="#fff"/>
-            <circle cx="62.2" cy="57.4" r=".85" fill="#fff" opacity=".8"/>
-            <path d="M35.4,51.4 q4.4,-4.4 8.4,-.4" stroke="#3d2f2a" stroke-width="1.7" fill="none" stroke-linecap="round"/>
-            <path d="M56.2,51 q4.4,-4 8.4,.4" stroke="#3d2f2a" stroke-width="1.7" fill="none" stroke-linecap="round"/>`;
-  }
+  const hairpin = c.pin ? `<g transform="translate(31,26) rotate(-10)">
+      <circle cx="0" cy="0" r="3.6" fill="#fffdf8" stroke="#f0e0d0" stroke-width=".7"/>
+      <path d="M-3.2,-1.6 l-.9,-3.4 3.1,1.7 Z" fill="#fffdf8" stroke="#f0e0d0" stroke-width=".6"/>
+      <path d="M3.2,-1.6 l.9,-3.4 -3.1,1.7 Z" fill="#fffdf8" stroke="#f0e0d0" stroke-width=".6"/>
+      <circle cx="-1.3" cy=".2" r=".55" fill="#7a5b45"/><circle cx="1.3" cy=".2" r=".55" fill="#7a5b45"/>
+      <path d="M-.6,1.3 q.6,.7 1.2,0" stroke="#e8a0a0" stroke-width=".6" fill="none" stroke-linecap="round"/>
+    </g>` : '';
+
+  const openEye = small => `
+    <g clip-path="url(#${u}eyeClip)">
+      <ellipse cx="39.6" cy="56.3" rx="7.2" ry="6.3" fill="${gWhite}"/>
+      <ellipse cx="39.6" cy="56.9" rx="${small ? 4.1 : 5.1}" ry="${small ? 4.6 : 5.7}" fill="${gIris}"/>
+      <ellipse cx="39.6" cy="52.4" rx="5.6" ry="2.7" fill="rgba(60,34,22,.32)"/>
+      <ellipse cx="39.6" cy="${small ? 57.5 : 57.6}" rx="${small ? 1.55 : 2.1}" ry="${small ? 1.95 : 2.8}" fill="#241a17"/>
+      <circle cx="37.5" cy="53.8" r="${small ? 1.4 : 1.85}" fill="#fff"/>
+      <circle cx="41.9" cy="59.2" r=".98" fill="#fff" opacity=".82"/>
+      <circle cx="38.3" cy="60.1" r=".6" fill="${eyeLt}" opacity=".9"/>
+      <path d="M33.3,60 C36.1,61.8 43.2,61.6 45.7,58.8" stroke="#97705b" stroke-width="1" fill="none" opacity=".42" stroke-linecap="round"/>
+    </g>
+    <path d="M32.4,56.2 C32.9,50.6 45.4,50.3 46.9,55.9" stroke="#2c211d" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M32.5,56 q-3.1,-1.6 -4.3,.3" stroke="#2c211d" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+    <path d="M34.6,48.2 q5,-2.2 10.2,-.2" stroke="${skinSh}" stroke-width="1.1" fill="none" opacity=".38" stroke-linecap="round"/>`;
+  const eyesOpen = small => `<g>${openEye(small)}</g><g transform="translate(100,0) scale(-1,1)">${openEye(small)}</g>`;
+  const eyesClosed = `
+    <path d="M33.5,57.6 C36.3,51.4 42.7,51.2 45.9,56.8" stroke="#2c211d" stroke-width="2.7" fill="none" stroke-linecap="round"/>
+    <path d="M33.5,57.6 q-2.8,-1.8 -4,-.5" stroke="#2c211d" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M45.9,56.8 q2.2,-2.2 3.3,-1" stroke="#2c211d" stroke-width="1.7" fill="none" stroke-linecap="round" opacity=".9"/>
+    <g transform="translate(100,0) scale(-1,1)">
+      <path d="M33.5,57.6 C36.3,51.4 42.7,51.2 45.9,56.8" stroke="#2c211d" stroke-width="2.7" fill="none" stroke-linecap="round"/>
+      <path d="M33.5,57.6 q-2.8,-1.8 -4,-.5" stroke="#2c211d" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M45.9,56.8 q2.2,-2.2 3.3,-1" stroke="#2c211d" stroke-width="1.7" fill="none" stroke-linecap="round" opacity=".9"/>
+    </g>`;
+  const eyes = mood === 'thanks' ? eyesClosed : eyesOpen(worried);
 
   const brows = worried
-    ? `<path d="M32,48 L42,45.2" stroke="${hairSh}" stroke-width="2.3" stroke-linecap="round"/>
-       <path d="M68,48 L58,45.2" stroke="${hairSh}" stroke-width="2.3" stroke-linecap="round"/>`
-    : `<path d="M32.6,45.4 q7,-3.4 13.6,-.2" stroke="${hairSh}" stroke-width="2.1" fill="none" stroke-linecap="round" opacity=".5"/>
-       <path d="M53.8,45.2 q7,-3.2 13.6,.2" stroke="${hairSh}" stroke-width="2.1" fill="none" stroke-linecap="round" opacity=".5"/>`;
+    ? `<path d="M32.4,48.4 q7,-4.6 13.2,-2.4" stroke="${hairDk}" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".72"/>
+       <g transform="translate(100,0) scale(-1,1)"><path d="M32.4,48.4 q7,-4.6 13.2,-2.4" stroke="${hairDk}" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".72"/></g>`
+    : `<path d="M32.8,47.6 q7,-3.8 13,-.6" stroke="${hairDk}" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".55"/>
+       <g transform="translate(100,0) scale(-1,1)"><path d="M32.8,47.6 q7,-3.8 13,-.6" stroke="${hairDk}" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".55"/></g>`;
 
-  const nose = `<path d="M49.3,58.8 q1.2,1.5 2.6,.4" stroke="${skinSh}" stroke-width="1.1" fill="none" stroke-linecap="round" opacity=".6"/>`;
+  const nose = `<path d="M49.4,59.6 q1.3,1.5 2.7,.5" stroke="${skinSh}" stroke-width="1.05" fill="none" stroke-linecap="round" opacity=".55"/>`;
 
   const mouth = mood === 'thanks'
-    ? `<path d="M42,63 Q50,78 58,63 Q50,71 42,63 Z" fill="#cf7a63"/>
-       <path d="M46,66.5 Q50,70 54,66.5" stroke="#b4654f" stroke-width="1.2" fill="none" stroke-linecap="round" opacity=".45"/>
-       <path d="M46.5,68.6 Q50,71 53.5,68.6" stroke="#ffd9cf" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".55"/>`
+    ? `<path d="M42,63 Q50,78 58,63 Q50,71 42,63 Z" fill="#c9705a"/>
+       <path d="M46,66.5 Q50,70 54,66.5" stroke="#a85843" stroke-width="1.2" fill="none" stroke-linecap="round" opacity=".45"/>
+       <path d="M46.5,68.6 Q50,71 53.5,68.6" stroke="#ffd9cf" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".55"/>
+       <ellipse cx="50" cy="71.4" rx="3.4" ry="2" fill="#e58b76" opacity=".55"/>`
     : happy
-      ? `<path d="M43,64 Q50,74 57,64 Q50,69 43,64 Z" fill="#cf7a63"/>
-         <path d="M46.5,68.2 Q50,70.2 53.5,68.2" stroke="#ffd9cf" stroke-width="1.4" fill="none" stroke-linecap="round" opacity=".5"/>`
+      ? `<path d="M43,64 Q50,74 57,64 Q50,69.4 43,64 Z" fill="#c9705a"/>
+         <path d="M46.5,68.2 Q50,70.4 53.5,68.2" stroke="#ffd9cf" stroke-width="1.4" fill="none" stroke-linecap="round" opacity=".5"/>
+         <ellipse cx="50" cy="69.6" rx="2.6" ry="1.5" fill="#e58b76" opacity=".5"/>`
       : worried
-        ? `<path d="M45,69.5 q5,-4 10,0" stroke="#c9705c" stroke-width="2.4" fill="none" stroke-linecap="round"/>`
-        : `<path d="M46.5,67 q3.5,3.6 7,0" stroke="#c9705c" stroke-width="2.4" fill="none" stroke-linecap="round"/>`;
+        ? `<path d="M45,69.5 q5,-4 10,0" stroke="#c26550" stroke-width="2.4" fill="none" stroke-linecap="round"/>`
+        : `<path d="M46.5,67 q3.5,3.6 7,0" stroke="#c26550" stroke-width="2.4" fill="none" stroke-linecap="round"/>`;
 
   const blush = worried ? '' :
-    `<ellipse cx="28.5" cy="62.5" rx="6" ry="3.4" fill="#ffb3b3" opacity=".5"/>
-     <ellipse cx="71.5" cy="62.5" rx="6" ry="3.4" fill="#ffb3b3" opacity=".5"/>
-     <path d="M25.8,62.4 h5.6 M25.2,64.4 h5" stroke="#f79a9a" stroke-width=".9" opacity=".5" stroke-linecap="round"/>
-     <path d="M68.6,62.4 h5.6 M69.8,64.4 h5" stroke="#f79a9a" stroke-width=".9" opacity=".5" stroke-linecap="round"/>`;
+    `<ellipse cx="28.6" cy="63.6" rx="6.2" ry="3.3" fill="#ffb0ae" opacity=".42"/>
+     <ellipse cx="71.4" cy="63.6" rx="6.2" ry="3.3" fill="#ffb0ae" opacity=".42"/>
+     <path d="M25.6,63 h6 M25.2,65.2 h5.2" stroke="#f7938f" stroke-width=".85" opacity=".45" stroke-linecap="round"/>
+     <path d="M68.4,63 h6 M69.6,65.2 h5.2" stroke="#f7938f" stroke-width=".85" opacity=".45" stroke-linecap="round"/>`;
 
   const glasses = c.glasses
-    ? `<circle cx="40" cy="55" r="9" fill="rgba(255,255,255,.26)" stroke="#6b5b52" stroke-width="1.9"/>
-       <circle cx="60" cy="55" r="9" fill="rgba(255,255,255,.26)" stroke="#6b5b52" stroke-width="1.9"/>
-       <path d="M49,55 h2" stroke="#6b5b52" stroke-width="1.9"/>
-       <path d="M31,53 l-6,-2" stroke="#6b5b52" stroke-width="1.9" stroke-linecap="round"/>
-       <path d="M69,53 l6,-2" stroke="#6b5b52" stroke-width="1.9" stroke-linecap="round"/>
-       <path d="M34.6,51.2 q3.6,-2.6 7.4,-1.2" stroke="#fff" stroke-width="1.5" opacity=".7" fill="none" stroke-linecap="round"/>
-       <path d="M54.6,51.2 q3.6,-2.6 7.4,-1.2" stroke="#fff" stroke-width="1.5" opacity=".7" fill="none" stroke-linecap="round"/>`
+    ? `<g fill="none" stroke="#6b5b52" stroke-width="1.5">
+         <rect x="30.4" y="50.6" width="18.6" height="12" rx="5.4" fill="rgba(255,255,255,.2)"/>
+         <rect x="51" y="50.6" width="18.6" height="12" rx="5.4" fill="rgba(255,255,255,.2)"/>
+         <path d="M49,55.8 q1,-1 2,0"/>
+         <path d="M30.4,54.6 l-5.2,-1.6"/>
+         <path d="M69.6,54.6 l5.2,-1.6"/>
+       </g>
+       <path d="M33.6,53.4 l6.2,-1.1 M54.2,53.4 l6.2,-1.1" stroke="rgba(255,255,255,.75)" stroke-width="1.6" stroke-linecap="round"/>`
     : '';
 
   const sweat = worried
-    ? `<path d="M76,38 q4,7 0,10 q-4,-3 0,-10 Z" fill="#9fd6ef"/>
-       <ellipse cx="75" cy="40.6" rx="1" ry="1.8" fill="rgba(255,255,255,.7)"/>` : '';
+    ? `<path d="M70,39 q3.6,6.6 0,9.2 q-3.6,-2.8 0,-9.2 Z" fill="#9fd6ef"/>
+       <ellipse cx="69.2" cy="41.4" rx=".9" ry="1.7" fill="rgba(255,255,255,.75)"/>` : '';
+
+  const collar = `<path d="M41.4,79.6 L50,87.4 L58.6,79.6 L55.4,78.2 L50,83.2 L44.6,78.2 Z" fill="#fffdfa" stroke="${outfitSh}" stroke-width=".9" opacity=".95"/>`;
+  const pearls = [0, 1, 2].map(i =>
+    `<circle cx="50" cy="${97 + i * 6}" r="1.5" fill="#fffdf8" stroke="${accentSh}" stroke-width=".5"/>`).join('');
 
   let extras = '';
   if (c.extra === 'apron') {
-    extras = `<path d="M37,80 h26 v27 q-13,5 -26,0 Z" fill="#fffdf8" stroke="#e9dcc8" stroke-width="1"/>
-              <path d="M38.5,80 q11.5,6 23,0" stroke="#f1e6d4" stroke-width="1.2" fill="none"/>
-              <rect x="45" y="88" width="10" height="8" rx="2" fill="#f4f8fb" stroke="#e2eef6" stroke-width="1"/>
-              <path d="M37,104 q13,5 26,0" stroke="#eee1cd" stroke-width="1" fill="none" opacity=".8"/>`;
+    extras = `<path d="M35.5,80.5 q14.5,6.5 29,0 l0,41 q-14.5,6.5 -29,0 Z" fill="${gApron}" stroke="${accentSh}" stroke-width="1.2"/>
+              <path d="M41,80 l1.4,-6.4 M59,80 l-1.4,-6.4" stroke="${accent}" stroke-width="3" stroke-linecap="round"/>
+              <path d="M36.5,82.4 q13.5,5.6 27,0" stroke="${accentHi}" stroke-width="1.1" fill="none" opacity=".35"/>
+              <rect x="46.6" y="84.4" width="14.4" height="6.6" rx="3.3" fill="#fffdf8" stroke="#e2eaf2" stroke-width=".8"/>
+              <text x="53.8" y="89.4" font-size="4.6" font-weight="700" fill="${accentSh}" text-anchor="middle" font-family="Arial,Helvetica,sans-serif">24h</text>
+              <rect x="45.5" y="94.6" width="14.6" height="10" rx="2.4" fill="${accentHi}" opacity=".35"/>
+              <rect x="46.2" y="95.2" width="13.2" height="8.8" rx="2" fill="none" stroke="${accentSh}" stroke-width=".7" opacity=".7"/>
+              <path d="M36.5,101.6 q13.5,5 27,0" stroke="${accentSh}" stroke-width="1.4" fill="none" opacity=".55"/>
+              <path d="M50,102.8 l-7.2,3.6 1.7,3.1 5.5,-2.9 Z" fill="${accentSh}" opacity=".9"/>
+              <path d="M50,102.8 l7.2,3.6 -1.7,3.1 -5.5,-2.9 Z" fill="${accentSh}" opacity=".9"/>
+              <circle cx="50" cy="105" r="1.9" fill="${accentHi}"/>
+              <path d="M38,111 q12,4.4 24,0" stroke="${accentSh}" stroke-width="1" fill="none" opacity=".3"/>`;
   } else if (c.extra === 'vest') {
-    extras = `<path d="M30,82 q7,-4 11,0 l0,34 q-8,1 -15,-2 Z" fill="${accent}" opacity=".82"/>
-              <path d="M70,82 q-7,-4 -11,0 l0,34 q8,1 15,-2 Z" fill="${accent}" opacity=".82"/>
-              <path d="M33.5,84.4 q3.6,-1.6 6.4,0" stroke="${shadeColor(accent, 24)}" stroke-width="1" fill="none" opacity=".7"/>
-              <path d="M66.5,84.4 q-3.6,-1.6 -6.4,0" stroke="${shadeColor(accent, 24)}" stroke-width="1" fill="none" opacity=".7"/>`;
+    extras = `<path d="M27.6,88 q8.6,-6 11,1.6 l0,32.4 q-6.6,.6 -10.6,-2.4 Z" fill="${accent}" opacity=".92"/>
+              <path d="M72.4,88 q-8.6,-6 -11,1.6 l0,32.4 q6.6,.6 10.6,-2.4 Z" fill="${accent}" opacity=".92"/>
+              <path d="M38.6,89.6 L50,105.4 L61.4,89.6 L57,87.6 L50,97.6 L43,87.6 Z" fill="${accentHi}" opacity=".55"/>
+              <path d="M38.4,89.4 L50,105.2 M61.6,89.4 L50,105.2" stroke="${accentSh}" stroke-width="1" opacity=".55"/>
+              <circle cx="50" cy="110" r="1.3" fill="${accentSh}"/>
+              <circle cx="50" cy="115" r="1.3" fill="${accentSh}"/>
+              <path d="M31,103 q4,3 8,3.6" stroke="${accentSh}" stroke-width="1" fill="none" opacity=".35"/>`;
   } else if (c.extra === 'tie') {
-    extras = `<path d="M46.6,80 h6.8 l-1.2,6.4 l-2.2,16 l-2.2,-16 Z" fill="${accent}"/>
-              <path d="M47.6,81.4 h4.8" stroke="${shadeColor(accent, 28)}" stroke-width="1" opacity=".8"/>`;
+    extras = `<path d="M41.4,79.4 L50,97.4 L43.4,99.4 L36.6,83 Z" fill="${accent}" stroke="${shadeColor(accent, -20)}" stroke-width=".8"/>
+              <path d="M58.6,79.4 L50,97.4 L56.6,99.4 L63.4,83 Z" fill="${accent}" stroke="${shadeColor(accent, -20)}" stroke-width=".8"/>
+              <path d="M43.4,78.6 L50,88.6 L56.6,78.6 Z" fill="#fffdfa" stroke="${outfitSh}" stroke-width=".8"/>
+              <path d="M48.2,84 h3.6 l1,7.4 -2.8,12.6 -2.8,-12.6 Z" fill="${c.tie || '#b4565c'}"/>
+              <path d="M48.8,91.6 h2.4" stroke="rgba(255,255,255,.45)" stroke-width=".8"/>`;
   } else if (c.extra === 'shawl') {
-    extras = `<path d="M28,82 q22,12 44,0 l0,9 q-22,12 -44,0 Z" fill="${accent}" opacity=".45"/>
-              <path d="M30,86.4 q20,10 40,0" stroke="${accentSh}" stroke-width="1.2" fill="none" opacity=".55"/>`;
+    extras = `<path d="M27.6,90 q7.4,6 8,30 l-7.6,0 Z" fill="${accent}" opacity=".28"/>
+              <path d="M72.4,90 q-7.4,6 -8,30 l7.6,0 Z" fill="${accent}" opacity=".28"/>
+              <path d="M38,83.6 C41,95 59,95 62,83.6 C58,90 42,90 38,83.6 Z" fill="${accent}" opacity=".5"/>
+              <path d="M40,84.6 C44,92 56,92 60,84.6" stroke="${accentSh}" stroke-width="1" fill="none" opacity=".5"/>
+              <path d="M50,92 v24" stroke="${accentSh}" stroke-width="1" opacity=".35" stroke-dasharray="2 2.4"/>
+              ${pearls}
+              <circle cx="30" cy="104" r="5" fill="${accent}" opacity=".22"/>
+              <circle cx="70" cy="104" r="5" fill="${accent}" opacity=".22"/>`;
+  } else if (c.extra === 'beanie') {
+    extras = `<path d="M36.6,79 C38,90 62,90 63.4,79 C62,84.4 38,84.4 36.6,79 Z" fill="${shadeColor(outfit, 14)}"/>
+              <path d="M40,80 C42,87 58,87 60,80" stroke="${shadeColor(outfit, 26)}" stroke-width="1.2" fill="none" opacity=".6"/>
+              <path d="M45,84 v11 M55,84 v11" stroke="#e9edf3" stroke-width="1.6" stroke-linecap="round"/>
+              <circle cx="45" cy="95.6" r="1.3" fill="#c9d2de"/><circle cx="55" cy="95.6" r="1.3" fill="#c9d2de"/>
+              <path d="M38,108 q12,4.6 24,0" stroke="${shadeColor(outfit, -18)}" stroke-width="1.2" fill="none" opacity=".6"/>`;
   }
+
+  const straps = c.extra === 'backpack'
+    ? `<path d="M35,80.5 L33,112 M65,80.5 L67,112" stroke="#dd7d77" stroke-width="4.2" stroke-linecap="round"/>
+       <path d="M35,80.5 L33,112" stroke="#f7aba6" stroke-width="1.2" stroke-linecap="round" opacity=".7"/>`
+    : '';
   const backpack = c.extra === 'backpack'
-    ? `<rect x="65" y="83" width="18" height="29" rx="9" fill="#f6a8a8" stroke="#e39090" stroke-width="1.2"/>
-       <rect x="68" y="91" width="12" height="8" rx="3.4" fill="#ffd0d0"/>
-       <path d="M69,94.6 h10" stroke="#eba6a6" stroke-width="1"/>` : '';
+    ? `<rect x="65" y="82" width="19" height="31" rx="9" fill="#f2958f" stroke="#dd7d77" stroke-width="1.2"/>
+       <rect x="68" y="90" width="13" height="9" rx="3.6" fill="#ffd2cd"/>
+       <path d="M69,94.6 h11" stroke="#e8948f" stroke-width="1"/>` : '';
 
   return `<svg viewBox="0 0 100 152" xmlns="http://www.w3.org/2000/svg">
     ${defs}
@@ -624,10 +700,13 @@ function charSVG(id, mood) {
     <rect x="27" y="78" width="46" height="44" rx="18" fill="${gCloth}" stroke="${outfitSh}" stroke-width="1.6"/>
     <path d="M31,117 q19,7 38,0" stroke="${outfitSh}" stroke-width="1.6" fill="none" opacity=".5"/>
     <path d="M67.6,83 q6.2,16 1.6,32" stroke="${outfitSh}" stroke-width="1.4" fill="none" opacity=".28"/>
-    <path d="M42,79 q8,9 16,0" stroke="${outfitDk}" stroke-width="2" fill="none" stroke-linecap="round" opacity=".6"/>
+    <path d="M29.4,92 q2.6,14 1.8,23" stroke="${outfitHi}" stroke-width="1.6" fill="none" opacity=".4"/>
+    <path d="M42,79 q8,9 16,0" stroke="${outfitDk}" stroke-width="2" fill="none" stroke-linecap="round" opacity=".5"/>
     <circle cx="50" cy="97" r="1.3" fill="${outfitDk}" opacity=".45"/>
     <circle cx="50" cy="109" r="1.3" fill="${outfitDk}" opacity=".45"/>
+    ${collar}
     ${extras}
+    ${straps}
     <rect x="16" y="82" width="11" height="30" rx="5.5" fill="${gCloth}" stroke="${outfitSh}" stroke-width="1.4"/>
     <rect x="73" y="82" width="11" height="30" rx="5.5" fill="${gCloth}" stroke="${outfitSh}" stroke-width="1.4"/>
     <path d="M16.8,105 h9.4" stroke="${outfitSh}" stroke-width="1.3" opacity=".5"/>
@@ -641,12 +720,17 @@ function charSVG(id, mood) {
     ${back}
     <circle cx="50" cy="52" r="30" fill="${gSkin}" stroke="${skinSh}" stroke-width="1.6"/>
     <path d="M31,64 q19,17 38,0" stroke="${skinSh}" stroke-width="2" fill="none" opacity=".16"/>
+    <path d="M25,50 C27,66 36,77 50,78 C64,77 73,66 75,50 C71,65 62,73 50,73 C38,73 29,65 25,50 Z" fill="${skinSh}" opacity=".08"/>
+    <path d="M24,45 C33,37 67,37 76,45 C67,41 33,41 24,45 Z" fill="${skinSh}" opacity=".12"/>
     <circle cx="20" cy="55" r="5.2" fill="${gSkin}" stroke="${skinSh}" stroke-width="1.2"/>
     <circle cx="80" cy="55" r="5.2" fill="${gSkin}" stroke="${skinSh}" stroke-width="1.2"/>
-    <path d="M21,52 q1.8,3 0,5.6" stroke="${skinSh}" stroke-width="1" fill="none" opacity=".55" stroke-linecap="round"/>
-    <path d="M79,52 q-1.8,3 0,5.6" stroke="${skinSh}" stroke-width="1" fill="none" opacity=".55" stroke-linecap="round"/>
+    <path d="M21,52.4 q1.8,3 0,5.6" stroke="${skinSh}" stroke-width="1" fill="none" opacity=".55" stroke-linecap="round"/>
+    <path d="M79,52.4 q-1.8,3 0,5.6" stroke="${skinSh}" stroke-width="1" fill="none" opacity=".55" stroke-linecap="round"/>
+    <ellipse cx="50" cy="74" rx="13.5" ry="5.4" fill="${skinSh}" opacity=".1"/>
     ${front}
     ${strands}
+    ${hairpin}
+    ${accessory}
     ${brows}
     ${eyes}
     ${nose}
