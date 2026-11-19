@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>灯街便利店 · 店员模拟器</title>
+<link rel="stylesheet" href="style.css?v=35">
+</head>
+<body>
+<div class="app">
+
+  <!-- ==================== 开始界面 ==================== -->
+  <section class="screen active" id="screen-title">
+    <div class="title-wrap">
+      <div class="title-stage">
+        <div class="tc" id="titleChar1"></div>
+        <div class="title-sign">
+          <img class="title-noren" src="assets/noren.svg" alt="">
+          <div class="ts-roof"></div>
+          <div class="ts-main">灯街便利店</div>
+          <div class="ts-sub">ひかりまち コンビニ</div>
+          <div class="ts-open">24 HOURS OPEN</div>
+        </div>
+        <div class="tc" id="titleChar2"></div>
+      </div>
+      <h1 class="game-title">日式便利店店员模拟器</h1>
+      <p class="game-sub">打扫 · 结账 · 上架　——　今天也请多关照！</p>
+      <div class="howto">
+        <div class="ht-card"><img src="assets/i_clean.svg" alt=""><b>打扫</b><i>点垃圾 / 擦污渍 / 理货架</i></div>
+        <div class="ht-card"><img src="assets/i_checkout.svg?v=2" alt=""><b>结账</b><i>点商品扫码 → 输入找零</i></div>
+        <div class="ht-card"><img src="assets/i_stock.svg" alt=""><b>上架</b><i>选箱子里的货 → 点对应货架</i></div>
+      </div>
+      <button class="btn btn-primary btn-lg" id="btnStart"><span class="btn-play"></span>开始打工</button>
+      <p class="tiny">建议使用桌面浏览器 · 鼠标点击操作</p>
+    </div>
+  </section>
+
+  <!-- ==================== 游戏主界面 ==================== -->
+  <section class="screen" id="screen-game">
+    <header class="hud">
+      <div class="hud-profile">
+        <div class="hp-avatar" id="hudAvatar"></div>
+        <div class="hp-info">
+          <span class="hp-shop"><img src="assets/i_store.svg" alt="">灯街便利店</span>
+          <b id="hudLevel">第 1 天</b>
+          <span class="hp-lv" id="hudShopLv">Lv.1 店铺</span>
+          <span class="hp-weather"><img id="hudWeatherIco" src="assets/i_sun.svg" alt=""><b id="hudWeather">晴</b><em id="hudTod">早晨</em></span>
+        </div>
+      </div>
+
+      <div class="hud-stats">
+        <div class="stat time">
+          <span class="st-ico"><img src="assets/i_time.svg" alt=""></span>
+          <div class="st-body">
+            <b id="hudTime">04:00</b>
+            <div class="stat-bar"><i id="hudTimeBar"></i></div>
+          </div>
+        </div>
+        <div class="stat mood">
+          <span class="st-ico"><img src="assets/i_heart.svg" alt=""></span>
+          <div class="st-body">
+            <b id="hudMood">100</b>
+            <div class="stat-bar mood"><i id="hudMoodBar"></i></div>
+          </div>
+        </div>
+        <div class="stat coin">
+          <span class="st-ico"><img src="assets/i_coin.svg?v=2" alt=""></span>
+          <div class="st-body"><b id="hudCoin">0</b><span class="st-unit">金币</span></div>
+        </div>
+        <div class="stat gem">
+          <span class="st-ico"><img src="assets/i_gem.svg" alt=""></span>
+          <div class="st-body"><b id="hudGem">0</b><span class="st-unit">钻石</span></div>
+        </div>
+      </div>
+
+      <div class="hud-right">
+        <button class="icon-btn" id="btnMusic" title="背景音乐"><img src="assets/i_music.svg?v=2" alt="背景音乐"></button>
+        <button class="icon-btn" id="btnSound" title="音效"><img id="btnSoundIcon" src="assets/i_sound.svg" alt="音效"></button>
+        <button class="icon-btn" id="btnQuit" title="回标题"><img src="assets/i_close.svg?v=2" alt="回标题"></button>
+      </div>
+    </header>
+
+    <div class="stage scene-day" id="stage">
+      <img class="bg-art" src="assets/bg.svg?v=4" alt="">
+      <div class="sun-beam"></div>
+      <div class="sun-beam b2"></div>
+      <div class="time-tint" id="timeTint"></div>
+
+      <!-- 暖簾 -->
+      <div class="noren">
+        <img class="noren-art" src="assets/noren.svg?v=3" alt="">
+        <span class="noren-name" id="sSign">灯街便利店</span>
+      </div>
+
+      <!-- 货架 -->
+      <div class="shelf-row" id="shelfRow"></div>
+
+      <!-- 墙面海报 -->
+      <img class="poster poster-a" src="assets/poster_sale.svg" alt="">
+      <img class="poster poster-b" src="assets/poster_24h.svg" alt="">
+
+      <!-- 自动门 -->
+      <div class="auto-door">
+        <div class="door-stage">
+          <div class="door-inside"></div>
+          <img class="door-art" src="assets/door_frame.svg?v=4" alt="">
+          <img class="door-leaf leaf-l" src="assets/door_leaf_l.svg?v=4" alt="">
+          <img class="door-leaf leaf-r" src="assets/door_leaf_r.svg?v=4" alt="">
+        </div>
+        <span class="door-bell" aria-hidden="true"></span>
+        <img class="door-mat" src="assets/mat.svg" alt="">
+      </div>
+
+      <!-- 收银台 -->
+      <div class="counter">
+        <img class="counter-art" src="assets/counter.svg" alt="收银台">
+        <img class="maneki" src="assets/maneki.svg" alt="招财猫">
+      </div>
+
+      <!-- 关东煮 -->
+      <div class="oden-stand" id="odenStand">
+        <img class="oden-art" src="assets/oden.svg" alt="">
+        <div class="oden-pot" id="odenPot"></div>
+        <div class="oden-steam"><span></span><span></span><span></span></div>
+        <div class="oden-label">关东煮</div>
+      </div>
+
+      <!-- 绿植 / 垃圾桶 / 购物篮 -->
+      <img class="plant" src="assets/plant.svg" alt="">
+      <img class="baskets" src="assets/baskets.svg" alt="" title="点击为顾客结账">
+      <div class="bin" id="binSpot">
+        <img src="assets/bin.svg" alt="">
+        <span>可燃</span>
+      </div>
+
+      <!-- 装修摆放层 -->
+      <div class="decor-layer" id="decorLayer"></div>
+
+      <div class="player" id="playerChar"></div>
+
+      <div class="trash-layer" id="trashLayer"></div>
+      <div class="char-layer" id="charLayer"></div>
+
+      <div class="crate" id="crate">
+        <div class="crate-box">
+          <div class="crate-title"><img src="assets/i_stock.svg" alt="">待上架</div>
+          <div class="crate-items" id="crateItems"></div>
+        </div>
+      </div>
+
+      <!-- 右侧功能入口 -->
+      <aside class="quick-rail">
+        <button class="qr-btn" id="railTask"><img src="assets/i_task.svg?v=2" alt=""><span>任务</span></button>
+        <button class="qr-btn hot" id="railUpgrade"><img src="assets/i_upgrade.svg" alt=""><span>升级</span><i class="qr-dot" id="railUpgradeDot"></i></button>
+        <button class="qr-btn" id="railDecor"><img src="assets/i_decor.svg" alt=""><span>装修</span></button>
+        <button class="qr-btn" id="railSetting"><img src="assets/i_setting.svg" alt=""><span>设置</span></button>
+      </aside>
+
+      <div class="weather-fx" id="weatherFx" aria-hidden="true"></div>
+
+      <div class="phase-hint" id="phaseHint"></div>
+      <div class="toasts" id="toastLayer"></div>
+      <div class="dialogue" id="dialogueLayer"></div>
+      <div class="modal" id="modalLayer"></div>
+    </div>
+
+    <div class="taskbar" id="taskbar"></div>
+
+    <!-- 底部导航 -->
+    <nav class="bottom-nav">
+      <button class="nav-btn active" data-nav="home"><img src="assets/i_home.svg" alt=""><span>店面</span></button>
+      <button class="nav-btn" data-nav="task"><img src="assets/i_task.svg?v=2" alt=""><span>任务</span></button>
+      <button class="nav-btn" data-nav="upgrade"><img src="assets/i_upgrade.svg" alt=""><span>升级</span><i class="nav-dot" id="navDot"></i></button>
+      <button class="nav-btn" data-nav="setting"><img src="assets/i_setting.svg" alt=""><span>设置</span></button>
+    </nav>
+  </section>
+
+  <!-- ==================== 结算界面 ==================== -->
+  <section class="screen" id="screen-result">
+    <div class="panel result-panel">
+      <div class="res-title" id="resTitle">今天也辛苦啦！</div>
+      <div class="stars" id="resStars"></div>
+      <div class="res-mid">
+        <div class="res-char" id="resChar"></div>
+        <div class="res-bubble" id="resBubble">做得不错哦～</div>
+      </div>
+      <div class="res-rows" id="resRows"></div>
+      <div class="res-unlock" id="resUnlock"></div>
+      <div class="res-actions">
+        <button class="btn" id="btnUpgrade"><img src="assets/i_upgrade.svg" alt="">升级道具</button>
+        <button class="btn btn-primary" id="btnNextDay">下一天 →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 升级界面 ==================== -->
+  <section class="screen" id="screen-upgrade">
+    <div class="panel upgrade-panel">
+      <div class="upgrade-head">
+        <div class="up-head-left">
+          <div class="up-badge"><img src="assets/i_upgrade.svg" alt=""></div>
+          <div>
+            <div class="up-title">道具升级</div>
+            <div class="up-sub">用打工赚到的金币，让明天的自己轻松一点</div>
+          </div>
+        </div>
+        <div class="up-coin"><img src="assets/i_coin.svg?v=2" alt=""><b id="upCoin">0</b><span>枚金币</span></div>
+      </div>
+      <div class="upgrade-list" id="upgradeList"></div>
+      <div class="upgrade-foot">
+        <button class="btn" id="btnBackResult">← 返回结算</button>
+        <button class="btn btn-primary" id="btnUpgradeGo">开始下一天 →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 失败界面 ==================== -->
+  <section class="screen" id="screen-fail">
+    <div class="panel fail-panel">
+      <div class="fail-face" id="failFace"></div>
+      <div class="fail-title">时间到啦……</div>
+      <p class="fail-text" id="failText">店长：「没关系，第一天谁都会手忙脚乱的。我们再来一次吧！」</p>
+      <div class="res-actions">
+        <button class="btn" id="btnFailHome">回标题</button>
+        <button class="btn btn-primary" id="btnRetry">再试一次</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+<script src="game.js"></script>
+</body>
+</html>
