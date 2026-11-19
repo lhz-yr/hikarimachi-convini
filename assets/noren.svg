@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 150" width="720" height="150" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="cloth" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fdf6e8"/>
+      <stop offset=".5" stop-color="#f9ecd6"/>
+      <stop offset="1" stop-color="#f2dfc1"/>
+    </linearGradient>
+    <linearGradient id="cloth2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fffaf0"/>
+      <stop offset=".55" stop-color="#fbf0dc"/>
+      <stop offset="1" stop-color="#f4e2c6"/>
+    </linearGradient>
+    <linearGradient id="rod" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e6c79e"/>
+      <stop offset="1" stop-color="#c69a6c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 挂杆 -->
+  <rect x="6" y="6" width="708" height="13" rx="6.5" fill="url(#rod)"/>
+  <rect x="6" y="7" width="708" height="4" rx="2" fill="#fff3dc" opacity=".65"/>
+  <circle cx="14" cy="12" r="7" fill="#d9b184" stroke="#b98757" stroke-width="1.6"/>
+  <circle cx="706" cy="12" r="7" fill="#d9b184" stroke="#b98757" stroke-width="1.6"/>
+
+  <!-- 三幅布帘 -->
+  <g>
+    <path d="M22 20 h216 v96 q-8 10 -16 0 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 V20 Z" fill="url(#cloth)" stroke="#dcc2a0" stroke-width="2"/>
+    <path d="M252 20 h216 v96 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 V20 Z" fill="url(#cloth2)" stroke="#dcc2a0" stroke-width="2"/>
+    <path d="M482 20 h216 v96 q-8 10 -16 0 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 q-9 10 -18 0 V20 Z" fill="url(#cloth)" stroke="#dcc2a0" stroke-width="2"/>
+  </g>
+
+  <!-- 布面褶皱 -->
+  <g stroke="#e6cfae" stroke-width="2" fill="none" opacity=".55">
+    <path d="M44 24 q6 46 0 90"/>
+    <path d="M94 24 q-6 46 0 90"/>
+    <path d="M146 24 q6 46 0 90"/>
+    <path d="M196 24 q-6 46 0 90"/>
+    <path d="M274 24 q6 46 0 90"/>
+    <path d="M324 24 q-6 46 0 90"/>
+    <path d="M378 24 q6 46 0 90"/>
+    <path d="M430 24 q-6 46 0 90"/>
+    <path d="M506 24 q6 46 0 90"/>
+    <path d="M558 24 q-6 46 0 90"/>
+    <path d="M612 24 q6 46 0 90"/>
+    <path d="M666 24 q-6 46 0 90"/>
+  </g>
+
+  <!-- 布面小纹样 -->
+  <g fill="#f2b892" opacity=".55">
+    <path d="M120 60 l10 10 -10 10 -10 -10 z"/>
+    <path d="M350 58 l10 10 -10 10 -10 -10 z"/>
+    <path d="M590 60 l10 10 -10 10 -10 -10 z"/>
+  </g>
+  <g fill="#9fd8be" opacity=".5">
+    <path d="M190 62 l8 8 -8 8 -8 -8 z"/>
+    <path d="M420 62 l8 8 -8 8 -8 -8 z"/>
+    <path d="M660 62 l8 8 -8 8 -8 -8 z"/>
+  </g>
+
+  <!-- 顶部高光 -->
+  <path d="M22 24 H238" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".5"/>
+  <path d="M252 24 H468" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".45"/>
+  <path d="M482 24 H698" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".5"/>
+</svg>

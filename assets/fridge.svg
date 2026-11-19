@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300" width="200" height="300" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="frMetal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fdfcf8"/>
+      <stop offset=".28" stop-color="#e9e4d9"/>
+      <stop offset=".62" stop-color="#d3ccbe"/>
+      <stop offset="1" stop-color="#eee9df"/>
+    </linearGradient>
+    <linearGradient id="frHead" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9fe0f3"/>
+      <stop offset=".55" stop-color="#66c1dd"/>
+      <stop offset="1" stop-color="#479fbe"/>
+    </linearGradient>
+    <linearGradient id="frGlass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f2fdff" stop-opacity=".82"/>
+      <stop offset=".42" stop-color="#d6f0fa" stop-opacity=".5"/>
+      <stop offset=".7" stop-color="#bfe6f5" stop-opacity=".62"/>
+      <stop offset="1" stop-color="#eefcff" stop-opacity=".75"/>
+    </linearGradient>
+    <linearGradient id="frInner" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f7feff"/>
+      <stop offset=".6" stop-color="#e3f5fc"/>
+      <stop offset="1" stop-color="#cfeaf6"/>
+    </linearGradient>
+    <linearGradient id="frShelf" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".45" stop-color="#dff1f8"/>
+      <stop offset="1" stop-color="#b9dcea"/>
+    </linearGradient>
+    <linearGradient id="frGlow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="frHl" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity=".85"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 顶部灯箱 -->
+  <rect x="4" y="2" width="192" height="34" rx="9" fill="url(#frHead)" stroke="#3f8aa6" stroke-width="2.4"/>
+  <rect x="10" y="7" width="180" height="5" rx="2.5" fill="#fff" opacity=".55"/>
+  <text x="100" y="25" text-anchor="middle" font-family="'Trebuchet MS',Arial,sans-serif" font-size="15" font-weight="700" fill="#ffffff" letter-spacing="2.4">COLD DRINK</text>
+  <g fill="#fff" opacity=".85">
+    <path d="M24 19 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2 z"/>
+    <path d="M176 19 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2 z"/>
+  </g>
+
+  <!-- 柜体 -->
+  <rect x="4" y="36" width="192" height="260" rx="9" fill="url(#frMetal)" stroke="#9c9587" stroke-width="2.4"/>
+  <rect x="10" y="42" width="180" height="248" rx="6" fill="url(#frInner)" stroke="#b9d7e2" stroke-width="1.6"/>
+
+  <!-- 内部灯带 -->
+  <rect x="14" y="46" width="172" height="18" fill="url(#frGlow)" opacity=".9"/>
+  <rect x="14" y="46" width="172" height="4" rx="2" fill="#fff" opacity=".95"/>
+
+  <!-- 内部层板 -->
+  <g>
+    <rect x="14" y="94" width="172" height="6" rx="2.5" fill="url(#frShelf)" stroke="#a9d3e2" stroke-width="1"/>
+    <rect x="14" y="154" width="172" height="6" rx="2.5" fill="url(#frShelf)" stroke="#a9d3e2" stroke-width="1"/>
+    <rect x="14" y="214" width="172" height="6" rx="2.5" fill="url(#frShelf)" stroke="#a9d3e2" stroke-width="1"/>
+    <rect x="14" y="274" width="172" height="6" rx="2.5" fill="url(#frShelf)" stroke="#a9d3e2" stroke-width="1"/>
+  </g>
+  <g stroke="#b9dcea" stroke-width="1.4" opacity=".55">
+    <path d="M30 100 V154"/>
+    <path d="M170 100 V154"/>
+    <path d="M30 160 V214"/>
+    <path d="M170 160 V214"/>
+    <path d="M30 220 V274"/>
+    <path d="M170 220 V274"/>
+  </g>
+
+  <!-- 玻璃门 -->
+  <rect x="12" y="42" width="176" height="248" rx="6" fill="url(#frGlass)" stroke="#9fc9d8" stroke-width="1.8"/>
+
+  <!-- 中缝 -->
+  <rect x="98" y="44" width="4" height="244" fill="#cfe3ea" opacity=".85"/>
+  <rect x="99.4" y="46" width="1.2" height="240" fill="#fff" opacity=".8"/>
+
+  <!-- 玻璃反光 -->
+  <path d="M34 46 L68 46 L26 240 L20 240 Z" fill="#fff" opacity=".5"/>
+  <path d="M82 46 L96 46 L58 226 L50 226 Z" fill="#fff" opacity=".26"/>
+  <path d="M142 46 L162 46 L124 208 L116 208 Z" fill="#fff" opacity=".22"/>
+  <path d="M14 52 H186 V62 H14 Z" fill="url(#frHl)" opacity=".8"/>
+
+  <!-- 把手 -->
+  <rect x="160" y="126" width="10" height="100" rx="5" fill="#c4cdd1" stroke="#8e999e" stroke-width="1.8"/>
+  <rect x="162.5" y="131" width="3.4" height="90" rx="1.7" fill="#fff" opacity=".7"/>
+  <rect x="160" y="120" width="10" height="8" rx="4" fill="#aeb9be"/>
+  <rect x="160" y="224" width="10" height="8" rx="4" fill="#aeb9be"/>
+
+  <!-- 冷凝水珠 -->
+  <g fill="#fff" opacity=".5">
+    <circle cx="46" cy="72" r="1.6"/>
+    <circle cx="52" cy="112" r="1.2"/>
+    <circle cx="150" cy="90" r="1.4"/>
+    <circle cx="138" cy="178" r="1.2"/>
+    <circle cx="70" cy="238" r="1.3"/>
+  </g>
+
+  <!-- 底座 -->
+  <rect x="4" y="286" width="192" height="12" rx="4" fill="#c9c3b7" stroke="#a09a8c" stroke-width="2"/>
+  <rect x="10" y="288" width="180" height="3" rx="1.5" fill="#fff" opacity=".45"/>
+</svg>

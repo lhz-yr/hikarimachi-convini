@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92 390" width="92" height="390" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="glassR" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#dff1f6" stop-opacity=".72"/>
+      <stop offset=".45" stop-color="#c5e6ef" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#eaf7fa" stop-opacity=".6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 玻璃 -->
+  <rect x="1" y="1" width="90" height="388" rx="4" fill="url(#glassR)" stroke="#b9a184" stroke-width="2"/>
+
+  <!-- 反射 -->
+  <g opacity=".7">
+    <path d="M78 8 L42 8 L82 184 Z" fill="#fff" opacity=".55"/>
+    <path d="M62 8 L30 8 L74 224 Z" fill="#fff" opacity=".3"/>
+  </g>
+
+  <!-- 把手 -->
+  <rect x="4" y="170" width="8" height="84" rx="4" fill="#b98f63" stroke="#8a6242" stroke-width="2"/>
+</svg>

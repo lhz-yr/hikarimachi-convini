@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300" width="200" height="300" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="shFrameL" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff6e6"/>
+      <stop offset=".35" stop-color="#f0d9b8"/>
+      <stop offset=".72" stop-color="#dfbf98"/>
+      <stop offset="1" stop-color="#c9a377"/>
+    </linearGradient>
+    <linearGradient id="shFrameT" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff8ea"/>
+      <stop offset=".45" stop-color="#f2ddbc"/>
+      <stop offset="1" stop-color="#d5b088"/>
+    </linearGradient>
+    <linearGradient id="shBack" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fffdf6"/>
+      <stop offset=".55" stop-color="#fdf4e4"/>
+      <stop offset="1" stop-color="#f6e6cd"/>
+    </linearGradient>
+    <linearGradient id="shBoard" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff9ee"/>
+      <stop offset=".35" stop-color="#f3dcbb"/>
+      <stop offset=".72" stop-color="#e3c29b"/>
+      <stop offset="1" stop-color="#c9a175"/>
+    </linearGradient>
+    <linearGradient id="shRail" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f3e6d2"/>
+    </linearGradient>
+    <linearGradient id="shLight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff4cf"/>
+      <stop offset="1" stop-color="#ffe4ad"/>
+    </linearGradient>
+    <linearGradient id="shShadeL" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#b58a5e" stop-opacity=".42"/>
+      <stop offset=".2" stop-color="#b58a5e" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="shShadeR" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0" stop-color="#b58a5e" stop-opacity=".36"/>
+      <stop offset=".2" stop-color="#b58a5e" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="shMetal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#efe9de"/>
+      <stop offset=".5" stop-color="#cdc4b4"/>
+      <stop offset="1" stop-color="#e6dfd2"/>
+    </linearGradient>
+    <pattern id="shGrain" width="46" height="26" patternUnits="userSpaceOnUse">
+      <path d="M0 7 q12 3 22 0 t24 0" stroke="#e2c49f" stroke-width="1" fill="none" opacity=".45"/>
+      <path d="M8 19 q10 -3 20 0" stroke="#eed6b6" stroke-width="1" fill="none" opacity=".5"/>
+    </pattern>
+  </defs>
+
+  <!-- 顶部灯箱 -->
+  <rect x="2" y="2" width="196" height="40" rx="10" fill="url(#shFrameT)" stroke="#a97f57" stroke-width="2.4"/>
+  <rect x="9" y="8" width="182" height="27" rx="7" fill="url(#shLight)" stroke="#dcb587" stroke-width="1.4"/>
+  <rect x="16" y="14" width="168" height="4" rx="2" fill="#fffdf3" opacity=".75"/>
+  <rect x="14" y="6" width="172" height="4" rx="2" fill="#fff" opacity=".7"/>
+  <circle cx="18" cy="33" r="2" fill="#fff" opacity=".8"/>
+  <circle cx="182" cy="33" r="2" fill="#fff" opacity=".8"/>
+
+  <!-- 背板 -->
+  <rect x="12" y="40" width="176" height="244" fill="url(#shBack)"/>
+  <g opacity=".5">
+    <path d="M52 44 V280" stroke="#f1e2c9" stroke-width="5"/>
+    <path d="M100 44 V280" stroke="#f1e2c9" stroke-width="5"/>
+    <path d="M148 44 V280" stroke="#f1e2c9" stroke-width="5"/>
+  </g>
+  <rect x="12" y="40" width="176" height="244" fill="url(#shShadeL)"/>
+  <rect x="12" y="40" width="176" height="244" fill="url(#shShadeR)"/>
+  <path d="M12 48 H188" stroke="#fff" stroke-width="5" opacity=".55"/>
+
+  <!-- 层板 ×4 -->
+  <g>
+    <!-- 第 1 层 -->
+    <rect x="14" y="94" width="172" height="6" rx="2" fill="url(#shBoard)"/>
+    <rect x="14" y="99" width="172" height="7" rx="2" fill="url(#shRail)" stroke="#dcc1a0" stroke-width=".9"/>
+    <g>
+      <rect x="28" y="100.6" width="15" height="4.6" rx="1.6" fill="#a8dcc3"/>
+      <rect x="62" y="100.6" width="15" height="4.6" rx="1.6" fill="#ffd189"/>
+      <rect x="96" y="100.6" width="15" height="4.6" rx="1.6" fill="#ffb3a4"/>
+      <rect x="130" y="100.6" width="15" height="4.6" rx="1.6" fill="#b8e0f5"/>
+      <rect x="160" y="100.6" width="15" height="4.6" rx="1.6" fill="#e7d3a9"/>
+    </g>
+    <rect x="14" y="104" width="172" height="3" fill="#b98f63" opacity=".22"/>
+
+    <!-- 第 2 层 -->
+    <rect x="14" y="154" width="172" height="6" rx="2" fill="url(#shBoard)"/>
+    <rect x="14" y="159" width="172" height="7" rx="2" fill="url(#shRail)" stroke="#dcc1a0" stroke-width=".9"/>
+    <g>
+      <rect x="28" y="160.6" width="15" height="4.6" rx="1.6" fill="#ffd189"/>
+      <rect x="62" y="160.6" width="15" height="4.6" rx="1.6" fill="#a8dcc3"/>
+      <rect x="96" y="160.6" width="15" height="4.6" rx="1.6" fill="#b8e0f5"/>
+      <rect x="130" y="160.6" width="15" height="4.6" rx="1.6" fill="#ffb3a4"/>
+      <rect x="160" y="160.6" width="15" height="4.6" rx="1.6" fill="#e7d3a9"/>
+    </g>
+    <rect x="14" y="164" width="172" height="3" fill="#b98f63" opacity=".22"/>
+
+    <!-- 第 3 层 -->
+    <rect x="14" y="214" width="172" height="6" rx="2" fill="url(#shBoard)"/>
+    <rect x="14" y="219" width="172" height="7" rx="2" fill="url(#shRail)" stroke="#dcc1a0" stroke-width=".9"/>
+    <g>
+      <rect x="28" y="220.6" width="15" height="4.6" rx="1.6" fill="#b8e0f5"/>
+      <rect x="62" y="220.6" width="15" height="4.6" rx="1.6" fill="#ffb3a4"/>
+      <rect x="96" y="220.6" width="15" height="4.6" rx="1.6" fill="#a8dcc3"/>
+      <rect x="130" y="220.6" width="15" height="4.6" rx="1.6" fill="#e7d3a9"/>
+      <rect x="160" y="220.6" width="15" height="4.6" rx="1.6" fill="#ffd189"/>
+    </g>
+    <rect x="14" y="224" width="172" height="3" fill="#b98f63" opacity=".22"/>
+
+    <!-- 第 4 层（底） -->
+    <rect x="14" y="274" width="172" height="6" rx="2" fill="url(#shBoard)"/>
+    <rect x="14" y="279" width="172" height="7" rx="2" fill="url(#shRail)" stroke="#dcc1a0" stroke-width=".9"/>
+    <g>
+      <rect x="28" y="280.6" width="15" height="4.6" rx="1.6" fill="#ffd189"/>
+      <rect x="62" y="280.6" width="15" height="4.6" rx="1.6" fill="#b8e0f5"/>
+      <rect x="96" y="280.6" width="15" height="4.6" rx="1.6" fill="#ffb3a4"/>
+      <rect x="130" y="280.6" width="15" height="4.6" rx="1.6" fill="#a8dcc3"/>
+      <rect x="160" y="280.6" width="15" height="4.6" rx="1.6" fill="#e7d3a9"/>
+    </g>
+  </g>
+
+  <!-- 层板托架 -->
+  <g fill="url(#shMetal)" stroke="#b3a893" stroke-width="1">
+    <rect x="18" y="105" width="5" height="11" rx="2"/>
+    <rect x="177" y="105" width="5" height="11" rx="2"/>
+    <rect x="18" y="165" width="5" height="11" rx="2"/>
+    <rect x="177" y="165" width="5" height="11" rx="2"/>
+    <rect x="18" y="225" width="5" height="11" rx="2"/>
+    <rect x="177" y="225" width="5" height="11" rx="2"/>
+  </g>
+
+  <!-- 侧柱 -->
+  <rect x="2" y="38" width="17" height="252" rx="7" fill="url(#shFrameL)" stroke="#a97f57" stroke-width="2.2"/>
+  <rect x="181" y="38" width="17" height="252" rx="7" fill="url(#shFrameL)" stroke="#a97f57" stroke-width="2.2"/>
+  <rect x="6" y="43" width="4" height="242" rx="2" fill="#fff" opacity=".55"/>
+  <rect x="188" y="43" width="4" height="242" rx="2" fill="#fff" opacity=".35"/>
+  <rect x="12" y="43" width="2" height="242" fill="#c9a175" opacity=".35"/>
+  <rect x="186" y="43" width="2" height="242" fill="#c9a175" opacity=".3"/>
+
+  <!-- 顶部与底部结构线 -->
+  <rect x="2" y="38" width="196" height="4" fill="#c9a175" opacity=".35"/>
+
+  <!-- 踢脚底座 -->
+  <rect x="2" y="284" width="196" height="14" rx="6" fill="url(#shFrameT)" stroke="#a97f57" stroke-width="2.2"/>
+  <rect x="9" y="287" width="182" height="4" rx="2" fill="#fff" opacity=".55"/>
+  <rect x="14" y="294" width="172" height="4" rx="2" fill="#b98f63" opacity=".3"/>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 60" width="40" height="60">
+  <defs>
+    <linearGradient id="mg3c" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff4cf"/>
+      <stop offset=".5" stop-color="#ffe2a1"/>
+      <stop offset="1" stop-color="#f6c46b"/>
+    </linearGradient>
+    <linearGradient id="mg3h" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0cf7f"/>
+      <stop offset="1" stop-color="#cfa14d"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="20" cy="57" rx="12" ry="2.4" fill="#8B6C55" opacity=".16"/>
+  <rect x="5.4" y="3" width="29.2" height="54" rx="2.6" fill="#fffdf8" stroke="#7c5a42" stroke-opacity=".4" stroke-width="1.1"/>
+  <rect x="7.4" y="5" width="25.2" height="50" rx="1.6" fill="url(#mg3c)"/>
+  <rect x="7.4" y="5" width="25.2" height="8.4" rx="1.6" fill="#e0a63c"/>
+  <text x="20" y="11.8" text-anchor="middle" font-family="'Trebuchet MS',Arial,sans-serif" font-size="5.2" font-weight="700" fill="#fffdf3" letter-spacing=".5">DAILY</text>
+  <g>
+    <path d="M11 48 q1 -8 9 -8 q8 0 9 8 z" fill="#fffdf6"/>
+    <path d="M13.6 48 q0 -5 6.4 -5 q6.4 0 6.4 5 z" fill="#ffe9bd"/>
+    <circle cx="20" cy="26.4" r="7.4" fill="#ffe8d8"/>
+    <path d="M12.2 26 q-1 -10 7.8 -10 q8.8 0 7.8 10 q-1 -3.8 -3 -4.4 q-4.8 3 -9.6 0 q-2 0.6 -3 4.4 z" fill="url(#mg3h)"/>
+    <path d="M12.6 23 q2 -7 7.4 -7 q5.4 0 7.4 7 q-3.6 -2.6 -7.4 -2.6 q-3.8 0 -7.4 2.6 z" fill="#f7dd9f"/>
+    <!-- 发带 -->
+    <path d="M12.4 22.4 q3.6 -3 7.6 -3 q4 0 7.6 3 l-1 2 q-3.2 -2 -6.6 -2 q-3.4 0 -6.6 2 z" fill="#ef8f9e"/>
+    <ellipse cx="17.2" cy="27.6" rx="1.9" ry="2.4" fill="#6b4a30"/>
+    <ellipse cx="22.8" cy="27.6" rx="1.9" ry="2.4" fill="#6b4a30"/>
+    <circle cx="16.6" cy="26.8" r=".8" fill="#fff"/>
+    <circle cx="22.2" cy="26.8" r=".8" fill="#fff"/>
+    <path d="M15.8 24.6 q1.4 -0.8 2.8 -0.2" stroke="#5a3d26" stroke-width=".8" fill="none"/>
+    <path d="M21.4 24.4 q1.4 -0.6 2.8 0.2" stroke="#5a3d26" stroke-width=".8" fill="none"/>
+    <circle cx="15.6" cy="31.2" r="1.2" fill="#ffb3a4" opacity=".7"/>
+    <circle cx="24.4" cy="31.2" r="1.2" fill="#ffb3a4" opacity=".7"/>
+    <path d="M19 31.8 q1 0.8 2 0" stroke="#d9887a" stroke-width=".7" fill="none"/>
+  </g>
+  <rect x="8.6" y="48.8" width="23" height="1.6" rx=".8" fill="#fff" opacity=".9"/>
+  <rect x="8.6" y="51.6" width="17" height="1.4" rx=".7" fill="#fff" opacity=".7"/>
+  <path d="M9 6 v46" stroke="#fff" stroke-width="1.6" opacity=".55"/>
+</svg>

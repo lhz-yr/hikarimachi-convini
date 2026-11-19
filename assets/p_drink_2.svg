@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 60" width="40" height="60">
+  <defs>
+    <linearGradient id="dr2p" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".55" stop-color="#fdfbf4"/>
+      <stop offset="1" stop-color="#e8e2d4"/>
+    </linearGradient>
+    <linearGradient id="dr2b" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9dd7f2"/>
+      <stop offset=".6" stop-color="#5fb6dd"/>
+      <stop offset="1" stop-color="#8ccbe9"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="20" cy="56" rx="12" ry="2.6" fill="#8B6C55" opacity=".16"/>
+  <!-- 屋顶式纸盒 -->
+  <path d="M11 13.4 L20 7.4 L29 13.4 V15 H11 Z" fill="#f4f8fb" stroke="#a9a091" stroke-width="1.1"/>
+  <path d="M11 13.4 L20 7.4 L20 15 Z" fill="#dde9f0" opacity=".8"/>
+  <rect x="10" y="15" width="20" height="40" rx="2.6" fill="url(#dr2p)" stroke="#a9a091" stroke-width="1.2"/>
+  <!-- 屋顶压痕 -->
+  <path d="M20 7.4 V15" stroke="#c7d3da" stroke-width="1"/>
+  <!-- 蓝色腰带 -->
+  <rect x="10" y="30.4" width="20" height="12.6" fill="url(#dr2b)"/>
+  <path d="M10 30.4 H30" stroke="#fff" stroke-width="1.2" opacity=".7"/>
+  <path d="M10 43 H30" stroke="#4f9ab8" stroke-width="1" opacity=".6"/>
+  <!-- 牛奶字样与奶牛斑点 -->
+  <text x="20" y="39.4" text-anchor="middle" font-family="'Trebuchet MS',Arial,sans-serif" font-size="6.4" font-weight="700" fill="#ffffff" letter-spacing=".6">MILK</text>
+  <g fill="#ffffff" opacity=".9">
+    <ellipse cx="14.2" cy="22.6" rx="2.6" ry="1.8" transform="rotate(-18 14.2 22.6)"/>
+    <ellipse cx="25.6" cy="25.2" rx="2" ry="1.4" transform="rotate(14 25.6 25.2)"/>
+  </g>
+  <circle cx="20" cy="24" r="4.4" fill="#fffdf6" stroke="#d8ccb8" stroke-width=".8"/>
+  <path d="M17.8 24.6 q2.2 2 4.4 0" stroke="#c9b9a2" stroke-width=".9" fill="none"/>
+  <circle cx="18.4" cy="22.8" r=".7" fill="#7a5b3e"/>
+  <circle cx="21.6" cy="22.8" r=".7" fill="#7a5b3e"/>
+  <!-- 吸管孔 -->
+  <circle cx="25" cy="17.6" r="1.6" fill="#cfd8dc" stroke="#a9b3b8" stroke-width=".7"/>
+  <!-- 高光 -->
+  <path d="M12.6 17 q-0.4 10 -0.4 22" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".85"/>
+  <path d="M27 17 q0 10 0 21" stroke="#fff" stroke-width="1" stroke-linecap="round" opacity=".35"/>
+</svg>

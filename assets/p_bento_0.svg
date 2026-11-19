@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 60" width="40" height="60">
+  <defs>
+    <linearGradient id="be0box" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5b4a3f"/>
+      <stop offset=".45" stop-color="#3d302a"/>
+      <stop offset="1" stop-color="#241c19"/>
+    </linearGradient>
+    <linearGradient id="be0rice" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f1e8d5"/>
+    </linearGradient>
+    <linearGradient id="be0egg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffe9a8"/>
+      <stop offset="1" stop-color="#f7c459"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="20" cy="55.5" rx="15" ry="2.8" fill="#8B6C55" opacity=".2"/>
+  <!-- 便当盒 -->
+  <rect x="3" y="17" width="34" height="36" rx="5" fill="url(#be0box)" stroke="#1d1613" stroke-width="1.2"/>
+  <rect x="5" y="19" width="30" height="32" rx="4" fill="#fdf7e9" stroke="#c9a578" stroke-width="1"/>
+  <!-- 米饭 -->
+  <path d="M6 20 h13.6 v13.4 h-13.6 z" fill="url(#be0rice)"/>
+  <g fill="#e3d6bd" opacity=".8">
+    <circle cx="9" cy="24" r=".6"/><circle cx="12" cy="27" r=".6"/>
+    <circle cx="15" cy="23" r=".6"/><circle cx="10.6" cy="30" r=".6"/>
+    <circle cx="16" cy="29" r=".6"/>
+  </g>
+  <path d="M8.6 22.6 q3.6 -1.6 7.4 0" stroke="#fff" stroke-width="1.2" fill="none" opacity=".9"/>
+  <!-- 玉子烧 -->
+  <g>
+    <rect x="21.6" y="20.4" width="11.6" height="7.8" rx="2" fill="url(#be0egg)" stroke="#d99b34" stroke-opacity=".55" stroke-width=".9"/>
+    <path d="M23 22.4 h8.8 M23 25 h8.8" stroke="#e9ad4b" stroke-width=".8" opacity=".75"/>
+  </g>
+  <!-- 炸鸡 -->
+  <g fill="#d99a55" stroke="#9c6231" stroke-opacity=".5" stroke-width=".9">
+    <circle cx="25" cy="33.4" r="3.6"/>
+    <circle cx="31" cy="35.6" r="3.1"/>
+    <circle cx="20.4" cy="35.8" r="2.7"/>
+  </g>
+  <g fill="#f3c78c" opacity=".85">
+    <circle cx="24" cy="32.2" r="1.2"/>
+    <circle cx="30.2" cy="34.4" r=".9"/>
+  </g>
+  <!-- 西兰花 -->
+  <g>
+    <rect x="7.2" y="37.2" width="2.2" height="7" rx="1.1" fill="#8fc48a"/>
+    <circle cx="8.4" cy="37.6" r="4.4" fill="#69ad74"/>
+    <circle cx="6.4" cy="39.4" r="2.6" fill="#7cbb84"/>
+    <circle cx="10.6" cy="39.8" r="2.4" fill="#58a067"/>
+  </g>
+  <!-- 小番茄 -->
+  <circle cx="14.4" cy="39.6" r="3.2" fill="#ef7b6b"/>
+  <circle cx="13.4" cy="38.4" r="1.1" fill="#ffcbc2" opacity=".9"/>
+  <path d="M14.4 36.4 l1.4 -1.4 M14.4 36.4 l-1.4 -1.4" stroke="#6f9c5b" stroke-width="1" stroke-linecap="round"/>
+  <!-- 烧鱼 -->
+  <path d="M20 41.6 q7 -3.2 13 0 q-1.4 4.6 -6.4 4.6 q-5.2 0 -6.6 -4.6 z" fill="#f0a179" stroke="#c47650" stroke-opacity=".5" stroke-width=".9"/>
+  <path d="M22 42.6 q5 -1.6 9 0" stroke="#ffd3ba" stroke-width="1" fill="none" opacity=".8"/>
+  <!-- 盒沿高光 -->
+  <path d="M5 20.4 h30" stroke="#fff" stroke-width="1.4" opacity=".55"/>
+  <path d="M4.4 19.4 v30" stroke="#fff" stroke-width="1" opacity=".25"/>
+</svg>

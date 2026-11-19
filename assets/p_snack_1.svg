@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 60" width="40" height="60">
+  <defs>
+    <linearGradient id="sn1b" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b57c58"/>
+      <stop offset=".45" stop-color="#8b512f"/>
+      <stop offset="1" stop-color="#5f3420"/>
+    </linearGradient>
+    <linearGradient id="sn1g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe6a8"/>
+      <stop offset="1" stop-color="#e9b95f"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="20" cy="56.4" rx="12.6" ry="2.5" fill="#8B6C55" opacity=".17"/>
+  <!-- 巧克力排 -->
+  <rect x="8" y="8" width="24" height="46" rx="3.4" fill="url(#sn1b)" stroke="#4a2716" stroke-width="1.2"/>
+  <rect x="8" y="8" width="24" height="6" rx="3" fill="#d8a760" opacity=".55"/>
+  <!-- 撕口 -->
+  <path d="M8 15 h24" stroke="#f0d4a2" stroke-width="1" stroke-dasharray="1.6 1.4" opacity=".85"/>
+  <!-- 金色标签 -->
+  <rect x="10.4" y="18" width="19.2" height="16.4" rx="3" fill="url(#sn1g)" stroke="#c99a3f" stroke-width=".9"/>
+  <text x="20" y="24.4" text-anchor="middle" font-family="'Trebuchet MS',Arial,sans-serif" font-size="4.6" font-weight="700" fill="#7a421f" letter-spacing=".4">CHOCO</text>
+  <!-- 可可豆 -->
+  <g fill="#5a3220" stroke="#3f2114" stroke-width=".6">
+    <ellipse cx="15.4" cy="30.4" rx="2.6" ry="3.4" transform="rotate(-16 15.4 30.4)"/>
+    <ellipse cx="21.2" cy="31.6" rx="2.4" ry="3.2" transform="rotate(10 21.2 31.6)"/>
+    <ellipse cx="26" cy="29.8" rx="2.1" ry="2.9" transform="rotate(-6 26 29.8)"/>
+  </g>
+  <g stroke="#8f6044" stroke-width=".7" fill="none" opacity=".8">
+    <path d="M14 28.4 q1.4 2 2.6 3.8"/>
+    <path d="M20 29.6 q1.2 1.8 2.4 3.4"/>
+  </g>
+  <!-- 巧克力方块 -->
+  <g fill="#6d3e28" stroke="#4a2716" stroke-width=".8">
+    <rect x="11.4" y="37.6" width="7.4" height="6.2" rx="1.4"/>
+    <rect x="20.6" y="37.6" width="8" height="6.2" rx="1.4"/>
+    <rect x="11.4" y="45.6" width="7.4" height="6.2" rx="1.4"/>
+    <rect x="20.6" y="45.6" width="8" height="6.2" rx="1.4"/>
+  </g>
+  <g fill="#a97450" opacity=".7">
+    <rect x="12.6" y="38.6" width="5.2" height="1.2" rx=".6"/>
+    <rect x="21.8" y="38.6" width="5.8" height="1.2" rx=".6"/>
+    <rect x="12.6" y="46.6" width="5.2" height="1.2" rx=".6"/>
+    <rect x="21.8" y="46.6" width="5.8" height="1.2" rx=".6"/>
+  </g>
+  <path d="M10.2 17 q-1.4 16 -1 30" stroke="#fff" stroke-width="1.8" stroke-linecap="round" opacity=".4"/>
+</svg>
